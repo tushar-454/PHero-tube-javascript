@@ -12,8 +12,19 @@ const dynamicCata = async () => {
     div.innerHTML = `<button
     class="bg-[#CBCBCB] rounded py-3 px-5 text-[#252525] text-xl font-medium active:bg-[#A5A5A5]">${category.category}</button>`;
     catagoryWraper.append(div);
-    console.log(category.category);
   }
-  console.log(categories);
 };
 dynamicCata();
+
+// get dynamic all category content
+
+const getCards = async (id) => {
+  const promise = await fetch(
+    `https://openapi.programming-hero.com/api/videos/category/${id}`
+  );
+  const response = await promise.json();
+  const cards = response.data;
+  console.log(cards);
+};
+
+getCards(1000);
