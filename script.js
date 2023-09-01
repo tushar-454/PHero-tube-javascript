@@ -27,13 +27,17 @@ const getCards = async (id) => {
   const cards = response.data;
 
   cardWraper.innerHTML = '';
-  for (const card of cards) {
-    const div = document.createElement('div');
-    div.classList = 'singleCard space-y-4 w-full sm:w-fit';
-    const secound = parseInt(card.others.posted_date);
-    const hour = Math.floor(secound / 3600);
-    const minutes = Math.floor((secound - hour * 3600) / 60);
-    div.innerHTML = `
+  const error = document.querySelector('.errorWraper');
+  if (cards.length === 0) {
+    error.classList.remove('hidden');
+  } else {
+    for (const card of cards) {
+      const div = document.createElement('div');
+      div.classList = 'singleCard space-y-4 w-full sm:w-fit';
+      const secound = parseInt(card.others.posted_date);
+      const hour = Math.floor(secound / 3600);
+      const minutes = Math.floor((secound - hour * 3600) / 60);
+      div.innerHTML = `
     <div class="cardImg relative w-full sm:w-[300px] md:w-[352px] lg:w-[310px] h-[200px]">
       <img src="${card.thumbnail}" class="w-full h-full rounded-lg">
       ${
@@ -69,7 +73,9 @@ const getCards = async (id) => {
         </div>
       </div>
     </div>`;
-    cardWraper.append(div);
+      cardWraper.append(div);
+    }
+    error.classList.add('hidden');
   }
 };
 // data loaded by categories
