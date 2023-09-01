@@ -29,14 +29,13 @@ const getCards = async (id) => {
   cardWraper.innerHTML = '';
   for (const card of cards) {
     const div = document.createElement('div');
+    div.classList = 'singleCard space-y-4 w-full sm:w-fit';
     const secound = parseInt(card.others.posted_date);
     const hour = Math.floor(secound / 3600);
     const minutes = Math.floor((secound - hour * 3600) / 60);
-    div.innerHTML = `<div class="singleCard space-y-4 w-fit">
-    <div class="cardImg relative">
-      <img src="${
-        card.thumbnail
-      }" class="w-full h-[200px] sm:w-[312px] object-cover rounded-lg">
+    div.innerHTML = `
+    <div class="cardImg relative w-full sm:w-[300px] md:w-[352px] lg:w-[310px] h-[200px]">
+      <img src="${card.thumbnail}" class="w-full h-full rounded-lg">
       ${
         secound
           ? `<span class='bg-[#171717] rounded text-[10px] text-white py-1 px-[5px] absolute right-4 bottom-2'>
@@ -49,7 +48,7 @@ const getCards = async (id) => {
       <div class="cardProfile w-10">
         <img src="${
           card.authors[0].profile_picture
-        }" class="w-10 h-10 object-cover rounded-full">
+        }" class="w-full h-10 object-cover rounded-full">
       </div>
       <div class="cardTextContent space-y-2">
         <div class="title">
@@ -69,8 +68,7 @@ const getCards = async (id) => {
           <p class="text-[#171717B2]"><span>${card.others.views}</span> view</p>
         </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
     cardWraper.append(div);
   }
 };
