@@ -42,8 +42,8 @@ const getCards = async (id, isSort) => {
       cards.sort((a, b) => {
         const x = parseFloat(a.others.views) * 1000;
         const y = parseFloat(b.others.views) * 1000;
-        if (x < y) return -1;
-        else if (x > y) return 1;
+        if (x > y) return -1;
+        else if (x < y) return 1;
         return 0;
       });
     }
