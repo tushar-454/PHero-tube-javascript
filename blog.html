@@ -20,7 +20,7 @@
 
     ::-webkit-scrollbar {
       width: 1px;
-      height: 4px;
+      height: 8px;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -166,7 +166,8 @@ console.log(constVariable); // output - error ❌
                   </pre>
                 </code>
                 <p class="text-2xl font-medium py-4">Remember</p>
-                <p class="text-xl font-medium py-4">var হচ্ছে function স্কোপ</p>
+                <p class="text-xl font-medium py-4"><code class="bg-gray-300/30 p-1 text-[#DC143C]">var</code> is the
+                  function scope</p>
                 <code>
                   <pre class="bg-white p-5 overflow-x-auto">
 function f() {
@@ -204,7 +205,49 @@ f();
                 and <code class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code></h1>
             </div>
             <div class="collapse-content">
-              <p>hello</p>
+              <div class="questionAnsTwo">
+                <p class="text-2xl py-4"><code class="bg-gray-300/30 text-[#DC143C] p-1">null</code> is --</p>
+                <p class="text-xl py-4">Null means an empty value or a blank value. It is the intentional absence of the
+                  value.</p>
+                <p class="text-2xl py-4"><code class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code> is --</p>
+                <p class="text-xl py-4">Undefined means the variable has been declared, but its value has not been
+                  assigned.</p>
+                <p class="text-2xl py-4">Stricly <code class="bg-gray-300/30 text-[#DC143C] p-1">null</code> and <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code> are not same --</p>
+                <p class="text-xl py-4">typeof <code class="bg-gray-300/30 text-[#DC143C] p-1">null</code> is <code
+                    class="bg-gray-300/30 p-1">object</code> and typeof <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code> </code> is <code
+                    class="bg-gray-300/30 p-1">undefined</code>. But they are False value. If we check it normal use of
+                  </code> is <code class="bg-gray-300/30 p-1">==</code> oparator it return </code> is <code
+                    class="bg-gray-300/30 p-1">true</code>. But If we check it stricly use of </code> is <code
+                    class="bg-gray-300/30 p-1">==</code> then it returns </code> is <code
+                    class="bg-gray-300/30 p-1">false</code>. So we can said <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">null</code> and <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code> are not same.</p>
+                <p class="text-2xl py-4">Usecase of <code class="bg-gray-300/30 text-[#DC143C] p-1">null</code> & <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code> --</p>
+                <p class="text-xl py-4"><code class="bg-gray-300/30 text-[#DC143C] p-1">null</code> is a value which set
+                  by the programmer or user intentionally. Let, people eat some fruits per day. His target is he
+                  eat a minimum of 3 fruites in a week. Now thinking about the week, let him not track on Monday &
+                  Tuesday. Now if
+                  he sets the value 0 then the average value is down which is not perfect. Now if he skips those days
+                  and
+                  then gets average that does not affect on average. So this is null. user can intentionally skip the
+                  value and set the value to null.
+                </p>
+                <p class="text-xl py-4"><code class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code> undefined is
+                  the value that
+                  about not an idea in the user. The user can not know which data is coming here, but he knows something
+                  set here This
+                  is undefined, which means data can come but at this time not defined. Now think about the upper
+                  example where
+                  people aim that he eat a minimum of 3 fruits in a week. But he doesn't know about Wednesday or
+                  Thursday.
+                  That day he eats or not but he knows will eat, In this situation value is none but it means undefined
+                  data can come.
+                  JavaScript is set undefined as well.
+                </p>
+              </div>
             </div>
           </div>
           <!-- blog question three  -->
