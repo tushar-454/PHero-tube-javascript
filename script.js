@@ -22,15 +22,32 @@ dynamicCata();
 
 // get dynamic all category content
 
-const getCards = async (id) => {
+const getCards = async (id, isSort) => {
   const cardWraper = document.getElementById('cardWraper');
   const promise = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${id}`
   );
   const response = await promise.json();
-  const cards = response.data;
+  let cards = response.data;
 
   cardWraper.innerHTML = '';
+  // sort function logic.
+  if (isSort) {
+    if (cards.length === 0) {
+      const errorMess = document.querySelector('.errorMess h1');
+      errorMess.style.color = 'red';
+      errorMess.style.transition = '0.3s';
+      errorMess.style.transform = 'scale(1.1)';
+    } else {
+      cards.sort((a, b) => {
+        const x = parseFloat(a.others.views) * 1000;
+        const y = parseFloat(b.others.views) * 1000;
+        if (x < y) return -1;
+        else if (x > y) return 1;
+        return 0;
+      });
+    }
+  }
   // if card nothing then show error message
   const error = document.querySelector('.errorWraper');
   if (cards.length === 0) {
@@ -86,7 +103,7 @@ const getCards = async (id) => {
 };
 // data loaded by categories
 const loadAsCate = (id) => {
-  getCards(id);
+  getCards(id, false);
   // categories active button color enable when click ta category
   const allCateItem = document.querySelectorAll('.cateItem');
   const activeId = document.getElementById(id);
@@ -100,4 +117,16 @@ const loadAsCate = (id) => {
   activeId.classList.add('text-white');
 };
 // initial all data loaded
-getCards(1000);
+getCards('1000', false);
+
+// sort function call click on sortbyview button
+const sortedData = (self) => {
+  const body = self.closest('body');
+  const allCateItem = body.querySelectorAll('.cateItem');
+  for (const item of allCateItem) {
+    if (item.classList.contains('bg-[#FF1F3D]')) {
+      const catagoryId = item.getAttribute('id');
+      getCards(catagoryId, true);
+    }
+  }
+};
