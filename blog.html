@@ -4,13 +4,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PH Tube | Blog</title>
-  <!-- tailwind cdn -->
+  <title>Blog || PH Tube</title>
+  <!-- tailwind and daisyui cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- inter font cdn  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 1px;
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #cccccc;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>This is a blog page</h1>
+  <header>
+    <div class="container mx-auto p-4">
+      <div
+        class="headWraper flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center py-8 border-b border-[#17171733]">
+        <div class="logo">
+          <a href="./index.html"><img src="./images/Logo.png" alt="logo" /></a>
+        </div>
+        <div class="sortViewBtn">
+          <button class="bg-[#CBCBCB] rounded py-3 px-5 text-[#252525] text-xl font-medium active:bg-[#A5A5A5]">PH Tube
+            blog page</button>
+        </div>
+        <d iv class="blogBtn">
+          <button class="bg-[#FF1F3D] rounded py-3 px-5 text-white text-xl font-medium active:bg-[#c91d34]"><a
+              href="./index.html">Home</a></button>
+        </d>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section>
+      <div class="container mx-auto p-4">
+        <div class="blogQuestionWrapper">
+          <div class="title flex flex-col sm:flex-row gap-4 items-start sm:items-center py-8">
+            <img src="./images/study.svg" alt="study" class="w-20">
+            <h1 class="text-4xl font-bold border-l-4 border-black pl-4">Study article and strengthen your knowledge</h1>
+          </div>
+          <!-- blog question one  -->
+          <div class="collapse collapse-arrow bg-base-200 rounded-sm mb-4 border-l-4 border-[#04AA6D]">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title text-xl font-medium">
+              <h1 class="text-3xl">1. Discuss the scope of <code class="bg-gray-300/30 text-[#DC143C] p-1">var</code>,
+                <code class="bg-gray-300/30 text-[#DC143C] p-1">let</code>, and <code
+                  class="bg-gray-300/30 text-[#DC143C] p-1">const</code>
+              </h1>
+            </div>
+            <div class="collapse-content overflow-x-auto">
+              <div class="questionOneAns">
+                <p class="text-xl py-4">Note the following codes first</p>
+                <code>
+                  <pre class="bg-white p-5 overflow-x-auto">
+if (true) {
+  var varVariable = 'This is var';
+}
+console.log(varVariable); // output - 'This is var'
+if (true) {
+  let letVariable = 'This is let';
+}
+console.log(letVariable); // output - Reference error
+                  </pre>
+                </code>
+                <p class="text-xl py-4">Here is a block scope taken at 1st. There a variable is taken with <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">var</code> and <code
+                    class="bg-gray-300/30 p-1">console.log(varVariable)</code> is done.</p>
+                <p class="text-xl py-4">Here is a block scope taken at 2nd. There a variable is taken with <code
+                    class="bg-gray-300/30 text-[#DC143C] p-1">let</code> and <code
+                    class="bg-gray-300/30 p-1">console.log(letVariable)</code> is done.</p>
+                <p class="text-xl py-4 text-wr">But the output of the two is completely different. It gives variable
+                  output with
+                  var and let gives error. A subtle reason for this is scope. var is function scope and let is block
+                  scope. Since if block scope, var can be used from outside but since let is block scope, we cannot use
+                  it outside if block.</p>
+                <p class="text-xl py-4">If we want to get <code class="bg-gray-300/30 text-[#DC143C] p-1">let</code> as
+                  output then <code class="bg-gray-300/30 p-1">console.log()</code> should be done in its block.</p>
+                <code>
+                    <pre class="bg-white p-5 overflow-x-auto">
+if (true) {
+  var varVariable = 'This is var';
+}
+
+console.log(varVariable); // output - 'This is var'
+
+if (true) {
+  let letVariable = 'This is let';
+  console.log(letVariable); // output - 'This is let'
+}
+                    </pre>
+                  </code>
+                <p class="text-2xl font-medium py-4">We can define multiples of var but not let.</p>
+                <code>
+                  <pre class="bg-white p-5 overflow-x-auto">
+if (true) {
+  var varVariable = 'This is var';
+  var varVariable = 'This is var 2'; // we can do it.
+}
+
+console.log(varVariable); 
+/* output - 'This is var 2'. But we can't get the output as per our requirement and see our output changed.*/
+
+if (true) {
+  let letVariable = 'This is let';
+  let letVariable = 'This is let 2';
+  console.log(letVariable);
+  /* output - error - I will get error here because we cannot define variable with multiple time let with same name. But I can change it in the same block.*/
+}
+if (true) {
+  let letVariable = 'This is let';
+  letVariable = 'This is let 2';
+  console.log(letVariable); // output - 'This is let 2'
+}
+/* See here again we used `letVariable` in two places, what is surprising, now it cannot be used in the name, now what happened. Because let block scope they are in different blocks so it can be done.*/
+                  </pre>
+                </code>
+                <p class="text-2xl font-medium py-4">I can't redefine to const and reassign is out of the question</p>
+                <code>
+                  <pre class="bg-white p-5 overflow-x-auto">
+if (true) {
+  const constVariable = 'This is let';
+  const constVariable = 'This is let 2';
+  console.log(constVariable); 
+  /* output - error - I will get error here  because I can't redefine const and reassign  doesn't come in the question. */
+}
+                  </pre>
+                </code>
+                <p class="text-xl font-medium py-4">But if the value of const variable is <code
+                    class="bg-gray-300/30 p-1 text-[#DC143C]">Array</code>, <code
+                    class="bg-gray-300/30 p-1 text-[#DC143C]">Object</code> instead of <code
+                    class="bg-gray-300/30 p-1 text-[#DC143C]">String</code>,
+                  <code class="bg-gray-300/30 p-1 text-[#DC143C]">number</code> then we cannot redefine
+                  but we can update the data.
+                </p>
+                <code>
+                  <pre class="bg-white p-5 overflow-x-auto">
+if (true) {
+  const constVariable = {
+    name: 'JS',
+    age: '25 years',
+  };
+  constVariable.name = 'JavaScript';
+  console.log(constVariable); // output - ✔
+}
+// But whatever const or let, I can't do anything outside of its block. error will occur.
+constVariable.name = 'Scripting Language'; // output - error ❌
+console.log(constVariable); // output - error ❌
+                  </pre>
+                </code>
+                <p class="text-2xl font-medium py-4">Remember</p>
+                <p class="text-xl font-medium py-4">var হচ্ছে function স্কোপ</p>
+                <code>
+                  <pre class="bg-white p-5 overflow-x-auto">
+function f() {
+  var a = 5;
+  console.log(a); // output - 5
+}
+console.log(a); // output - error - a is not defind
+f();
+                  </pre>
+                </code>
+                <p class="text-xl font-medium py-4">But if we define <code
+                    class="bg-gray-300/30 p-1 text-[#DC143C]">var</code> globally then we get <code
+                    class="bg-gray-300/30 p-1">var a = 5;</code> outside and inside the function.</p>
+                <code>
+                  <pre class="bg-white p-5 overflow-x-auto">
+  var a = 5;
+  function f() {
+    console.log(a); // output - 5
+  }
+  console.log(a); // output - 5
+  f();
+                  </pre>
+                </code>
+                <p class="text-xl font-medium py-4">Because function here is child so it will get everything of its
+                  parent.</p>
+              </div>
+            </div>
+          </div>
+          <!-- blog question two  -->
+          <div class="collapse collapse-arrow bg-base-200 rounded-sm mb-4 border-l-4 border-[#04AA6D]">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title text-xl font-medium">
+              <h1 class="text-3xl">2. Tell us the use cases of <code
+                  class="bg-gray-300/30 text-[#DC143C] p-1">null</code>
+                and <code class="bg-gray-300/30 text-[#DC143C] p-1">undefined</code></h1>
+            </div>
+            <div class="collapse-content">
+              <p>hello</p>
+            </div>
+          </div>
+          <!-- blog question three  -->
+          <div class="collapse collapse-arrow bg-base-200 rounded-sm mb-4 border-l-4 border-[#04AA6D]">
+            <input type="radio" name="my-accordion-2" checked="checked" />
+            <div class="collapse-title text-xl font-medium">
+              <h1 class="text-3xl">3. What do you mean by REST API?</h1>
+            </div>
+            <div class="collapse-content">
+              <p>hello</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
