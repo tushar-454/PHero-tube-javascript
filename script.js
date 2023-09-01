@@ -10,9 +10,12 @@ const dynamicCata = async () => {
   for (const category of categories) {
     const div = document.createElement('div');
     div.innerHTML = `<button
-    class="bg-[#CBCBCB] rounded py-3 px-5 text-[#252525] text-xl font-medium active:bg-[#A5A5A5]" onclick="loadAsCate(${category.category_id})">${category.category}</button>`;
+    class="cateItem bg-[#CBCBCB] rounded py-3 px-5 text-[#252525] text-xl font-medium active:bg-[#A5A5A5]" id=${category.category_id} onclick="loadAsCate(${category.category_id})">${category.category}</button>`;
     catagoryWraper.append(div);
   }
+  const allCateItem = document.querySelectorAll('.cateItem');
+  allCateItem[0].classList.add('bg-[#FF1F3D]');
+  allCateItem[0].classList.add('text-white');
 };
 dynamicCata();
 
@@ -81,6 +84,16 @@ const getCards = async (id) => {
 // data loaded by categories
 const loadAsCate = (id) => {
   getCards(id);
+  const allCateItem = document.querySelectorAll('.cateItem');
+  const activeId = document.getElementById(id);
+  for (const item of allCateItem) {
+    item.classList.remove('bg-[#FF1F3D]');
+    item.classList.remove('text-white');
+    item.classList.add('bg-[#CBCBCB]');
+    item.classList.add('text-[#252525]');
+  }
+  activeId.classList.add('bg-[#FF1F3D]');
+  activeId.classList.add('text-white');
 };
 // initial all data loaded
 getCards(1000);
