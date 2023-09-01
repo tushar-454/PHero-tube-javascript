@@ -13,6 +13,7 @@ const dynamicCata = async () => {
     class="cateItem bg-[#CBCBCB] rounded py-3 px-5 text-[#252525] text-xl font-medium active:bg-[#A5A5A5]" id=${category.category_id} onclick="loadAsCate(${category.category_id})">${category.category}</button>`;
     catagoryWraper.append(div);
   }
+  //how default active button different  color
   const allCateItem = document.querySelectorAll('.cateItem');
   allCateItem[0].classList.add('bg-[#FF1F3D]');
   allCateItem[0].classList.add('text-white');
@@ -30,10 +31,12 @@ const getCards = async (id) => {
   const cards = response.data;
 
   cardWraper.innerHTML = '';
+  // if card nothing then show error message
   const error = document.querySelector('.errorWraper');
   if (cards.length === 0) {
     error.classList.remove('hidden');
   } else {
+    // if card availble then show all card
     for (const card of cards) {
       const div = document.createElement('div');
       div.classList = 'singleCard space-y-4 w-full sm:w-fit';
@@ -84,6 +87,7 @@ const getCards = async (id) => {
 // data loaded by categories
 const loadAsCate = (id) => {
   getCards(id);
+  // categories active button color enable when click ta category
   const allCateItem = document.querySelectorAll('.cateItem');
   const activeId = document.getElementById(id);
   for (const item of allCateItem) {
